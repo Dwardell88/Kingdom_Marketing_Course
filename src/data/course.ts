@@ -132,7 +132,8 @@ export const modules: Module[] = [
         id: "2-2",
         title: "Testimonials Without Distortion",
         duration: "13 min",
-        summary: "How to use real customer stories without implying they are typical when they are not.",
+        summary:
+          "How to use real customer stories without implying they are typical when they are not.",
         body: [
           "Testimonials are powerful because readers trust peers more than brands. That power is exactly why misuse is costly: an unrepresentative testimonial borrows a stranger's credibility to make a promise you cannot keep.",
           "Three rules keep testimonials honest. Use real customers with verifiable experience. Present outcomes alongside what results customers generally achieve. Disclose any material connection — payment, free product, employment, family relationship — clearly and near the statement itself.",
@@ -299,7 +300,8 @@ export const modules: Module[] = [
         id: "4-3",
         title: "Email, Text, and Privacy Obligations",
         duration: "13 min",
-        summary: "Consent, identification, and opt-out across the channels most small businesses use.",
+        summary:
+          "Consent, identification, and opt-out across the channels most small businesses use.",
         body: [
           "Commercial email requires accurate headers and subject lines, identification as an advertisement where applicable, a valid physical postal address, a working opt-out mechanism, and prompt honoring of opt-out requests.",
           "Text-message marketing is stricter. It generally requires prior express written consent for marketing messages, with the consent request stating clearly what the subscriber will receive. Consent obtained for one purpose does not transfer to another.",
@@ -310,7 +312,8 @@ export const modules: Module[] = [
           "Marketing texts require prior express written consent",
           "Collect less data than you are able to collect",
         ],
-        action: "Test your own opt-out links and confirm removal happens within your stated window.",
+        action:
+          "Test your own opt-out links and confirm removal happens within your stated window.",
       },
     ],
   },
@@ -375,7 +378,8 @@ export const modules: Module[] = [
           "Numbers and concrete nouns beat adjectives",
           "Read aloud; cut what you would not say in person",
         ],
-        action: "Rewrite your primary call-to-action section using only words a customer would use.",
+        action:
+          "Rewrite your primary call-to-action section using only words a customer would use.",
       },
     ],
   },
@@ -420,7 +424,8 @@ export const modules: Module[] = [
           "Make offers legible immediately; never disguise them",
           "Track replies and revenue per subscriber, not open rates",
         ],
-        action: "Plan your next eight emails and confirm at least five deliver value without an ask.",
+        action:
+          "Plan your next eight emails and confirm at least five deliver value without an ask.",
       },
       {
         id: "6-3",
@@ -437,7 +442,8 @@ export const modules: Module[] = [
           "Give customers forwardable language",
           "Never filter review requests by expected sentiment",
         ],
-        action: "Add a referral ask to your delivery process at the point of confirmed satisfaction.",
+        action:
+          "Add a referral ask to your delivery process at the point of confirmed satisfaction.",
       },
     ],
   },
@@ -492,7 +498,8 @@ export const modules: Module[] = [
         id: "7-3",
         title: "Marketing That Matches the Company",
         duration: "12 min",
-        summary: "The final integrity test: does the customer's experience match the advertisement?",
+        summary:
+          "The final integrity test: does the customer's experience match the advertisement?",
         body: [
           "Marketing does not create a reputation; it makes a promise that operations must keep. When the gap between promise and experience is small, marketing compounds. When the gap is wide, marketing accelerates decline by exposing more people to the disappointment faster.",
           "Audit the gap directly. Write down what your marketing promises, then buy from yourself as a customer would. Note every point where the experience is worse than the promise. Fix operations or lower the promise — either closes the gap, and both are honest.",

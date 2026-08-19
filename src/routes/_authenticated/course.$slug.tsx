@@ -122,9 +122,7 @@ function ModulePage() {
           return (
             <article key={lesson.id} className="scroll-mt-24" id={lesson.id}>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="font-display text-sm font-semibold text-gold">
-                  Lesson {i + 1}
-                </span>
+                <span className="font-display text-sm font-semibold text-gold">Lesson {i + 1}</span>
                 <span className="text-xs text-muted-foreground">{lesson.duration}</span>
               </div>
               <h2 className="mt-1.5 font-display text-2xl font-semibold tracking-tight">

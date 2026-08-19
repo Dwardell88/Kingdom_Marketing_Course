@@ -57,17 +57,17 @@ function LandingPage() {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:py-28">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                7 modules · {totalLessons} lessons · lifetime access
+                <ShieldCheck className="h-3.5 w-3.5" />7 modules · {totalLessons} lessons · lifetime
+                access
               </span>
               <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink-foreground text-balance sm:text-5xl lg:text-6xl">
                 Market your business <span className="gradient-gold-text">without</span> selling
                 your conscience.
               </h1>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-foreground/75">
-                Kingdom Marketing trains Christian business owners to promote their work with
-                claims that are true, methods that are lawful, and results that hold up. Biblical
-                principle and FTC compliance in one coherent system.
+                Kingdom Marketing trains Christian business owners to promote their work with claims
+                that are true, methods that are lawful, and results that hold up. Biblical principle
+                and FTC compliance in one coherent system.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button asChild variant="hero" size="xl">
@@ -103,8 +103,7 @@ function LandingPage() {
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Either you adopt tactics you'd be embarrassed to explain in your church lobby, or you
               stay invisible and call it integrity. Both are failures. Honest, specific, legally
-              sound marketing is the version that compounds — and this course teaches it as a
-              craft.
+              sound marketing is the version that compounds — and this course teaches it as a craft.
             </p>
           </div>
         </section>
@@ -156,9 +155,7 @@ function LandingPage() {
                     {String(m.id).padStart(2, "0")}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-lg font-semibold tracking-tight">
-                      {m.title}
-                    </h3>
+                    <h3 className="font-display text-lg font-semibold tracking-tight">{m.title}</h3>
                     <p className="mt-0.5 text-sm text-muted-foreground">{m.tagline}</p>
                   </div>
                   <span className="shrink-0 text-xs text-muted-foreground">

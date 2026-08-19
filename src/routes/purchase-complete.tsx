@@ -68,7 +68,9 @@ function PurchaseCompletePage() {
             </>
           ) : (
             <>
-              <h1 className="font-display text-2xl font-semibold">We couldn't confirm that order</h1>
+              <h1 className="font-display text-2xl font-semibold">
+                We couldn't confirm that order
+              </h1>
               <p className="mt-3 leading-relaxed text-muted-foreground">
                 If you were charged, your access will appear shortly. Check your course page, or
                 contact us with your receipt and we'll sort it out immediately.
