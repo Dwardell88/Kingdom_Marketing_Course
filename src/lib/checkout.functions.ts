@@ -25,6 +25,7 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
       "line_items[0][price_data][currency]": "usd",
       "line_items[0][price_data][unit_amount]": String(PRICE_CENTS),
       "line_items[0][price_data][product_data][name]": PRODUCT_NAME,
+      allow_promotion_codes: "true",
       success_url: `${data.origin}/purchase-complete?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${data.origin}/enroll`,
       client_reference_id: context.userId,

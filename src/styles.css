@@ -69,29 +69,29 @@
   --radius: 0.5rem;
 
   --background: oklch(0.977 0.011 85);
-  --foreground: oklch(0.26 0.028 145);
+  --foreground: oklch(0.2 0 0);
 
   --card: oklch(0.995 0.006 90);
-  --card-foreground: oklch(0.26 0.028 145);
+  --card-foreground: oklch(0.2 0 0);
   --popover: oklch(0.995 0.006 90);
-  --popover-foreground: oklch(0.26 0.028 145);
+  --popover-foreground: oklch(0.2 0 0);
 
-  --primary: oklch(0.33 0.055 155);
+  --primary: oklch(0.16 0 0);
   --primary-foreground: oklch(0.975 0.012 85);
 
   --secondary: oklch(0.93 0.018 85);
-  --secondary-foreground: oklch(0.3 0.04 150);
+  --secondary-foreground: oklch(0.2 0 0);
 
   --muted: oklch(0.945 0.014 85);
   --muted-foreground: oklch(0.5 0.025 110);
 
   --accent: oklch(0.92 0.035 85);
-  --accent-foreground: oklch(0.32 0.05 150);
+  --accent-foreground: oklch(0.2 0 0);
 
   --gold: oklch(0.7 0.115 80);
-  --gold-foreground: oklch(0.23 0.035 145);
+  --gold-foreground: oklch(0.18 0 0);
 
-  --ink: oklch(0.24 0.035 150);
+  --ink: oklch(0.12 0 0);
   --ink-foreground: oklch(0.96 0.015 85);
 
   --parchment: oklch(0.955 0.018 85);
@@ -106,18 +106,18 @@
   --input: oklch(0.885 0.018 85);
   --ring: oklch(0.7 0.115 80);
 
-  --chart-1: oklch(0.33 0.055 155);
+  --chart-1: oklch(0.16 0 0);
   --chart-2: oklch(0.7 0.115 80);
   --chart-3: oklch(0.5 0.07 150);
   --chart-4: oklch(0.6 0.09 80);
   --chart-5: oklch(0.4 0.05 120);
 
   --sidebar: oklch(0.955 0.018 85);
-  --sidebar-foreground: oklch(0.26 0.028 145);
-  --sidebar-primary: oklch(0.33 0.055 155);
+  --sidebar-foreground: oklch(0.2 0 0);
+  --sidebar-primary: oklch(0.16 0 0);
   --sidebar-primary-foreground: oklch(0.975 0.012 85);
   --sidebar-accent: oklch(0.92 0.035 85);
-  --sidebar-accent-foreground: oklch(0.32 0.05 150);
+  --sidebar-accent-foreground: oklch(0.2 0 0);
   --sidebar-border: oklch(0.885 0.018 85);
   --sidebar-ring: oklch(0.7 0.115 80);
 }
@@ -190,7 +190,7 @@
   }
 
   .gradient-ink {
-    background: linear-gradient(150deg, oklch(0.28 0.045 155) 0%, oklch(0.2 0.035 150) 100%);
+    background: linear-gradient(150deg, oklch(0.16 0 0) 0%, oklch(0.08 0 0) 100%);
   }
 
   .gradient-gold-text {
