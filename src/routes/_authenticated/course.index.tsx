@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, Lock, Scale, Target } from "lucide-react";
+import { Lock } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { getEnrollment } from "@/lib/course.functions";
-import { modules, totalLessons, COURSE_PRICE_LABEL } from "@/data/course";
+import { getCourseProgress } from "@/lib/course.functions";
+import { modules, COURSE_PRICE_LABEL } from "@/data/course";
 
 export const Route = createFileRoute("/_authenticated/course/")({
   head: () => ({
@@ -14,20 +14,18 @@ export const Route = createFileRoute("/_authenticated/course/")({
       { title: "Your course — Kingdom Marketing" },
       {
         name: "description",
-        content: "Your Kingdom Marketing dashboard: module progress and next lesson.",
+        content: "Your Kingdom Marketing dashboard: module progress and next module.",
       },
     ],
   }),
   component: CourseHome,
 });
 
-const themeIcon = { biblical: BookOpen, legal: Scale, practice: Target } as const;
-
 function CourseHome() {
-  const fetchEnrollment = useServerFn(getEnrollment);
+  const fetchProgress = useServerFn(getCourseProgress);
   const { data, isPending } = useQuery({
-    queryKey: ["enrollment"],
-    queryFn: () => fetchEnrollment(),
+    queryKey: ["course-progress"],
+    queryFn: () => fetchProgress(),
   });
 
   if (isPending) {
@@ -55,12 +53,11 @@ function CourseHome() {
     );
   }
 
-  const done = new Set(data.completed);
-  const completedCount = done.size;
-  const pct = Math.round((completedCount / totalLessons) * 100);
+  const completedCount = modules.filter((m) => data.progress[m.id]?.completed).length;
+  const pct = Math.round((completedCount / modules.length) * 100);
 
   const nextModule =
-    modules.find((m) => m.lessons.some((l) => !done.has(l.id))) ?? modules[modules.length - 1];
+    modules.find((m) => !data.progress[m.id]?.completed) ?? modules[modules.length - 1];
 
   return (
     <Shell>
@@ -71,9 +68,9 @@ function CourseHome() {
         <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-ink-foreground">
           {completedCount === 0
             ? "Begin with Module 1"
-            : completedCount === totalLessons
+            : completedCount === modules.length
               ? "Course complete"
-              : `${completedCount} of ${totalLessons} lessons complete`}
+              : `${completedCount} of ${modules.length} modules complete`}
         </h1>
         <Progress value={pct} className="mt-5 h-2 bg-ink-foreground/15" />
         <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -89,9 +86,7 @@ function CourseHome() {
       <h2 className="mt-12 font-display text-xl font-semibold">All modules</h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {modules.map((m) => {
-          const Icon = themeIcon[m.theme];
-          const mDone = m.lessons.filter((l) => done.has(l.id)).length;
-          const mPct = Math.round((mDone / m.lessons.length) * 100);
+          const done = data.progress[m.id]?.completed;
           return (
             <Link
               key={m.id}
@@ -103,18 +98,15 @@ function CourseHome() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-md bg-primary font-display text-sm font-semibold text-primary-foreground">
                   {m.id}
                 </span>
-                <Icon className="h-4 w-4 text-muted-foreground" />
+                <span className="text-lg">{done ? "✓" : m.emoji}</span>
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold leading-snug tracking-tight group-hover:text-primary">
                 {m.title}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{m.tagline}</p>
-              <div className="mt-4 flex items-center gap-3">
-                <Progress value={mPct} className="h-1.5 flex-1" />
-                <span className="text-xs tabular-nums text-muted-foreground">
-                  {mDone}/{m.lessons.length}
-                </span>
-              </div>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{m.sub}</p>
+              <p className="mt-3 text-xs font-medium text-muted-foreground">
+                {done ? "✓ Completed" : "Not started"}
+              </p>
             </Link>
           );
         })}

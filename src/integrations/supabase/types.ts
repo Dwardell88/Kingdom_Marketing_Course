@@ -8,26 +8,32 @@ export type Database = {
   };
   public: {
     Tables: {
-      lesson_progress: {
+      module_progress: {
         Row: {
-          completed_at: string;
+          completed_at: string | null;
           id: string;
-          lesson_id: string;
           module_id: number;
+          notes: string;
+          quiz_answers: Json;
+          updated_at: string;
           user_id: string;
         };
         Insert: {
-          completed_at?: string;
+          completed_at?: string | null;
           id?: string;
-          lesson_id: string;
           module_id: number;
+          notes?: string;
+          quiz_answers?: Json;
+          updated_at?: string;
           user_id: string;
         };
         Update: {
-          completed_at?: string;
+          completed_at?: string | null;
           id?: string;
-          lesson_id?: string;
           module_id?: number;
+          notes?: string;
+          quiz_answers?: Json;
+          updated_at?: string;
           user_id?: string;
         };
         Relationships: [];

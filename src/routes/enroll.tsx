@@ -9,8 +9,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { createCheckoutSession } from "@/lib/checkout.functions";
-import { getEnrollment } from "@/lib/course.functions";
-import { COURSE_PRICE_LABEL, modules, totalLessons } from "@/data/course";
+import { getCourseProgress } from "@/lib/course.functions";
+import { COURSE_PRICE_LABEL, modules } from "@/data/course";
 
 export const Route = createFileRoute("/enroll")({
   head: () => ({
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/enroll")({
 });
 
 const included = [
-  `All 7 modules and ${totalLessons} lessons`,
+  "All 7 modules, each with a quiz and a 30-minute group session guide",
   "Written marketing standard template",
   "FTC claims-file and substantiation worksheet",
   "Pre-publication review checklist",
@@ -46,12 +46,12 @@ function EnrollPage() {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const checkout = useServerFn(createCheckoutSession);
-  const fetchEnrollment = useServerFn(getEnrollment);
+  const fetchProgress = useServerFn(getCourseProgress);
   const [busy, setBusy] = useState(false);
 
   const { data: enrollment } = useQuery({
-    queryKey: ["enrollment"],
-    queryFn: () => fetchEnrollment(),
+    queryKey: ["course-progress"],
+    queryFn: () => fetchProgress(),
     enabled: Boolean(user),
   });
 
@@ -154,7 +154,7 @@ function EnrollPage() {
                     </span>
                     <div>
                       <p className="font-medium leading-snug">{m.title}</p>
-                      <p className="text-muted-foreground">{m.tagline}</p>
+                      <p className="text-muted-foreground">{m.sub}</p>
                     </div>
                   </li>
                 ))}

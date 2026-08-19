@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, Scale, Target } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
-import { modules, totalLessons } from "@/data/course";
+import { modules } from "@/data/course";
 
 export const Route = createFileRoute("/curriculum")({
   head: () => ({
@@ -12,7 +11,7 @@ export const Route = createFileRoute("/curriculum")({
       {
         name: "description",
         content:
-          "All 7 modules and 22 lessons: Biblical marketing foundations, honest claims, FTC compliance, systems, positioning, channels, and measurement.",
+          "All 7 modules: Biblical marketing foundations, honest claims, FTC compliance, and real-world application — each with a self-paced study and a 30-minute group-teaching guide.",
       },
       { property: "og:title", content: "Curriculum — 7 Modules of Kingdom Marketing" },
       {
@@ -27,12 +26,6 @@ export const Route = createFileRoute("/curriculum")({
   component: CurriculumPage,
 });
 
-const themeMeta = {
-  biblical: { icon: BookOpen, label: "Biblical principle" },
-  legal: { icon: Scale, label: "Legal compliance" },
-  practice: { icon: Target, label: "Application" },
-} as const;
-
 function CurriculumPage() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -44,60 +37,43 @@ function CurriculumPage() {
               Full curriculum
             </p>
             <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-              Seven modules. {totalLessons} lessons. One coherent standard.
+              Seven modules. One coherent standard.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Every module pairs a principle with a practice. You finish each one with something
-              written, changed, or removed from your marketing — not just something understood.
+              Every module pairs a principle with a practice — scripture, teaching, a quiz, and a
+              written action step. Each one also includes a 30-minute group-teaching guide, so you
+              can walk your team or a small group through it live.
             </p>
           </div>
         </section>
 
         <section className="mx-auto max-w-4xl px-5 py-16">
           <div className="space-y-10">
-            {modules.map((m) => {
-              const Icon = themeMeta[m.theme].icon;
-              return (
-                <article
-                  key={m.id}
-                  className="rounded-xl border border-border bg-card p-7 shadow-soft"
-                >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary font-display text-sm font-semibold text-primary-foreground">
-                      {m.id}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground">
-                      <Icon className="h-3.5 w-3.5" />
-                      {themeMeta[m.theme].label}
-                    </span>
-                  </div>
+            {modules.map((m) => (
+              <article
+                key={m.id}
+                className="rounded-xl border border-border bg-card p-7 shadow-soft"
+              >
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary font-display text-sm font-semibold text-primary-foreground">
+                    {m.id}
+                  </span>
+                  <span className="text-xl">{m.emoji}</span>
+                </div>
 
-                  <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight">
-                    {m.title}
-                  </h2>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">{m.description}</p>
+                <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight">
+                  {m.title}
+                </h2>
+                <p className="mt-1 text-sm font-medium text-gold">{m.sub}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{m.teaching[0]}</p>
 
-                  <ul className="mt-5 divide-y divide-border border-t border-border">
-                    {m.lessons.map((l) => (
-                      <li key={l.id} className="flex gap-4 py-3.5">
-                        <span className="mt-1 text-xs font-medium tabular-nums text-muted-foreground">
-                          {l.id}
-                        </span>
-                        <div className="min-w-0">
-                          <p className="font-medium">{l.title}</p>
-                          <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
-                            {l.summary}
-                          </p>
-                        </div>
-                        <span className="ml-auto shrink-0 text-xs text-muted-foreground">
-                          {l.duration}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
+                <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 text-xs text-muted-foreground">
+                  <span>{m.scriptures.length} scripture passages</span>
+                  <span>{m.quiz.length}-question quiz</span>
+                  <span>30-min group session guide</span>
+                </div>
+              </article>
+            ))}
           </div>
 
           <div className="mt-14 rounded-xl gradient-ink p-9 text-center shadow-lifted">

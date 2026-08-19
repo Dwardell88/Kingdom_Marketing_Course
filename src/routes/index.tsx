@@ -3,7 +3,7 @@ import { BookOpen, Check, Scale, ShieldCheck, Target } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
-import { COURSE_PRICE_LABEL, modules, totalLessons } from "@/data/course";
+import { COURSE_PRICE_LABEL, modules } from "@/data/course";
 import heroImage from "@/assets/hero-desk.jpg";
 
 export const Route = createFileRoute("/")({
@@ -57,8 +57,8 @@ function LandingPage() {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:py-28">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
-                <ShieldCheck className="h-3.5 w-3.5" />7 modules · {totalLessons} lessons · lifetime
-                access
+                <ShieldCheck className="h-3.5 w-3.5" />7 modules · quizzes · group-teaching guides ·
+                lifetime access
               </span>
               <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink-foreground text-balance sm:text-5xl lg:text-6xl">
                 Market your business <span className="gradient-gold-text">without</span> selling
@@ -156,11 +156,9 @@ function LandingPage() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-display text-lg font-semibold tracking-tight">{m.title}</h3>
-                    <p className="mt-0.5 text-sm text-muted-foreground">{m.tagline}</p>
+                    <p className="mt-0.5 text-sm text-muted-foreground">{m.sub}</p>
                   </div>
-                  <span className="shrink-0 text-xs text-muted-foreground">
-                    {m.lessons.length} lessons
-                  </span>
+                  <span className="shrink-0 text-xl">{m.emoji}</span>
                 </li>
               ))}
             </ol>
