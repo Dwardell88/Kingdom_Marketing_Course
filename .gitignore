@@ -2,6 +2,7 @@ node_modules
 dist
 .output
 .vinxi
+.netlify
 .env
 .env.local
 pnpm-lock.yaml

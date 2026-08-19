@@ -22,10 +22,10 @@ export default defineConfig(async ({ command }) => {
 
   if (command === "build") {
     const { nitro } = await import("nitro/vite");
-    // "node-server" runs anywhere Node does (a VM, Docker, Railway, Render, Fly.io).
-    // Swap the preset if you deploy to Vercel ("vercel"), Netlify ("netlify"),
-    // or Cloudflare Workers ("cloudflare-module") instead.
-    plugins.push(nitro({ preset: "node-server" }));
+    // Deploying to Netlify. Swap the preset if that changes: "vercel" for
+    // Vercel, "cloudflare-module" for Cloudflare Workers, "node-server" to
+    // run it yourself anywhere Node does (a VM, Docker, Railway, Render, Fly.io).
+    plugins.push(nitro({ preset: "netlify" }));
   }
 
   plugins.push(viteReact());
